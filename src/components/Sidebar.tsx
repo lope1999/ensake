@@ -2,6 +2,8 @@ import Image from "next/image";
 import { LayoutGrid, Gift, Clock, QrCode, CheckCircle2 } from "lucide-react";
 import { getUser } from "@/lib/auth";
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/lib/LanguageContext";
+import { translations } from "@/lib/i18n";
 
 export default function Sidebar() {
   const [user, setUser] = useState<{
@@ -9,6 +11,8 @@ export default function Sidebar() {
     last_name?: string;
     email?: string;
   }>({});
+  const { lang } = useLanguage();
+  const t = translations[lang as "en" | "de"];
 
   useEffect(() => {
     const u = getUser();
@@ -34,7 +38,7 @@ export default function Sidebar() {
             </div>
             <div className="ml-3">
               <div className="font-semibold text-gray-900">Ensake</div>
-              <div className="text-xs text-gray-500">Loyalties</div>
+              <div className="text-xs text-gray-500">{t.sidebar.loyalties}</div>
             </div>
           </div>
           <button className="p-1 w-6 h-6 rounded border border-gray-200 flex items-center justify-center">
@@ -56,23 +60,23 @@ export default function Sidebar() {
         </div>
       </div>
       <div className="flex-1">
-        <div className="p-4 text-sm text-gray-500">MAIN</div>
+        <div className="p-4 text-sm text-gray-500">{t.sidebar.main}</div>
         <div className="space-y-1">
           <div className="flex items-center px-4 py-2 bg-blue-50 text-blue-600 border-l-4 border-blue-600">
             <LayoutGrid size={18} className="mr-2" />
-            <span>Dashboard</span>
+            <span>{t.sidebar.dashboard}</span>
           </div>
           <div className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
             <Gift size={18} className="mr-2" />
-            <span>Rewards</span>
+            <span>{t.sidebar.rewards}</span>
           </div>
           <div className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
             <Clock size={18} className="mr-2" />
-            <span>Transactions</span>
+            <span>{t.sidebar.transactions}</span>
           </div>
           <div className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
             <QrCode size={18} className="mr-2" />
-            <span>Scan</span>
+            <span>{t.sidebar.scan}</span>
           </div>
         </div>
       </div>

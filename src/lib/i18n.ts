@@ -23,6 +23,14 @@ export const translations = {
     sortBy: "Sort by:",
     pointsAsc: "Points ↑",
     pointsDesc: "Points ↓",
+    sidebar: {
+      main: "MAIN",
+      dashboard: "Dashboard",
+      rewards: "Rewards",
+      transactions: "Transactions",
+      scan: "Scan",
+      loyalties: "Loyalties"
+    },
   },
   de: {
     loginTitle: "Melden Sie sich bei Ihrem Konto an",
@@ -48,5 +56,13 @@ export const translations = {
     sortBy: "Sortieren nach:",
     pointsAsc: "Punkte ↑",
     pointsDesc: "Punkte ↓",
+    sidebar: {
+      main: "HAUPTMENÜ",
+      dashboard: "Dashboard",
+      rewards: "Belohnungen",
+      transactions: "Transaktionen",
+      scan: "Scannen",
+      loyalties: "Treueprogramme"
+    },
   },
 }; 
