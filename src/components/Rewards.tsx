@@ -24,6 +24,7 @@ export default function Rewards() {
     email: "",
   });
   const [loading, setLoading] = useState(true);
+  const [loadingRewardId, setLoadingRewardId] = useState<number | null>(null);
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
   const router = useRouter();
   const { lang } = useLanguage();
@@ -167,9 +168,11 @@ export default function Rewards() {
                           true,
                           setPoints,
                           setRewards,
-                          router
+                          router,
+                          setLoadingRewardId
                         )
                       }
+                      isLoading={loadingRewardId === reward.id}
                       disabled={reward.claimed}
                     />
                   ))}
@@ -209,9 +212,11 @@ export default function Rewards() {
                             canClaim,
                             setPoints,
                             setRewards,
-                            router
+                            router,
+                            setLoadingRewardId
                           )
                         }
+                        isLoading={loadingRewardId === reward.id}
                         disabled={reward.claimed || !canClaim}
                       />
                     );

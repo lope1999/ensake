@@ -45,9 +45,10 @@ export async function handleClaimReward(
     canClaim: boolean,
     setPoints: (arg0: any) => void,
     setRewards: (arg0: (prev: any) => any) => void,
-    router: any
+    router: any,
+    setLoadingRewardId: (arg0: any) => void,
   ) {
-    toast.info(`Claiming ${reward.brand.name} reward...`);
+    setLoadingRewardId(reward.id); 
     if (!canClaim) {
       toast.error("Insufficient points to claim this reward.");
       return;
@@ -75,4 +76,5 @@ export async function handleClaimReward(
     } else {
       toast.error(data?.message || "Failed to claim reward.");
     }
+    setLoadingRewardId(null); 
 }
