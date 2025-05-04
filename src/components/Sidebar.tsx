@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { LayoutGrid, Gift, Clock, QrCode, CheckCircle2 } from "lucide-react";
+import { LayoutGrid, Gift, Clock, QrCode } from "lucide-react";
 import { getUser } from "@/lib/auth";
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/lib/LanguageContext";
@@ -80,10 +80,8 @@ export default function Sidebar() {
           </div>
         </div>
       </div>
-      {/* User Info at the bottom */}
       <div className="border-t border-gray-200 p-4 mt-auto">
         <div className="flex items-center">
-          {/* Avatar */}
           <div className="w-10 h-10 rounded-full overflow-hidden bg-blue-200 flex items-center justify-center">
             <Image src="/user.svg" alt="User Avatar" width={40} height={40} />
           </div>
