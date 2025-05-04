@@ -14,6 +14,7 @@ import RewardCard from "@/components/RewardCard";
 import { useLanguage } from "@/lib/LanguageContext";
 import { translations } from "@/lib/i18n";
 import LanguageToggle from "./LanguageToggle";
+import Head from "next/head";
 
 export default function Rewards() {
   const [points, setPoints] = useState<number | null>(null);
@@ -36,6 +37,7 @@ export default function Rewards() {
         router.push("/");
         return;
       }
+
       setLoading(true);
       const device = getDeviceHeader();
       const { ok, data, status } = await apiRequest(
@@ -45,6 +47,7 @@ export default function Rewards() {
         undefined,
         device
       );
+
       if (ok) {
         setPoints(data.customer_points);
         if (Array.isArray(data.rewards)) {
@@ -68,6 +71,7 @@ export default function Rewards() {
       }
       setLoading(false);
     };
+
     fetchRewards();
   }, [router]);
 
@@ -80,6 +84,9 @@ export default function Rewards() {
 
   return (
     <div className="flex h-screen bg-gray-50">
+      <Head>
+        <title>Rewards Page</title>
+      </Head>
       <Sidebar />
       <div className="flex-1 flex flex-col">
         <header className="bg-white border-b border-gray-200 p-4">

@@ -18,7 +18,7 @@ export async function handleLogin(
   const { ok, data } = await apiRequest(
     "/login",
     "POST",
-    undefined,
+    null,
     { email, password },
     device
   );

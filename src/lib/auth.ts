@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 const TOKEN_KEY = "ensake_token";
 const TOKEN_TIME = "ensake_token_time";
 const TTL_MS = 5 * 60 * 1000;
@@ -29,7 +31,10 @@ export function getToken(): string | null {
   if (token && timestamp) {
     const isValid = Date.now() - parseInt(timestamp) < TTL_MS;
     if (isValid) return token;
+
     clearToken();
+    clearUser();
+    toast.error("Session expired. Please log in again.");
   }
   return null;
 }
